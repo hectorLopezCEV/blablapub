@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->group(function () {
+    Route::namespace('Admin')->group(function () {
+
+        Route::get('users', 'UsersController@index');
+        Route::post('users', 'UsersController@post');
+
+        Route::get('locales', 'LocalesController@index');
+
+        Route::get('promociones', 'PromocionesController@index');
+    });
 });
+
+// Route::get('/', 'Controller@index');

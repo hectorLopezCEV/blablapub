@@ -84,6 +84,18 @@
                     Laravel
                 </div>
 
+                <div>
+                    {{ $pepe->name }}
+                    {{ $user2->name }}
+                </div>
+
+                <form action="", method="POST">
+                    <input type="text" name="nombre" placeholder="nombre">
+                    <input type="text" name="email" placeholder="email">
+                    <input type="submit" value="Enviar">
+                    @csrf
+                </form>
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
