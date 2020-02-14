@@ -12,14 +12,10 @@ class UsersController extends Controller
     // php artisan make:controller NombreDelControlador
     public function index()
     {
-        User::where('name', 'pepe')->where('id', 1)->get();// SELECT * FROM users WHERE name = "pepe" AND id = 1
-        DB::table('users')->select('*')->where('name', 'pepe')->where('id', 1)->get();
-        $user = User::find(1);
-        $user2 = User::find(2);
+        $users = User::all();
 
-        return view('test/welcome', [
-            'pepe' => $user,
-            'user2' => $user2
+        return view('admin/users/index', [
+            'users' => $users
         ]);
     }
 
