@@ -4,8 +4,7 @@
         <i class="fa fa-dashboard nav-icon"></i> {{ trans('backpack::base.dashboard') }}
     </a>
 </li>
-{{dd(backpack_user()->can('view users'))}}
-@if(backpack_user()->can('view users'))
+{{-- @if(backpack_user()->can('view users')) --}}
 <!-- Users, Roles, Permissions -->
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-group"></i> Authentication</a>
@@ -33,20 +32,20 @@
         <i class="nav-icon fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span>
     </a>
 </li>
-@endif
+{{-- @endif --}}
 <!-- Places -->
-@if(backpack_user()->can('view places'))
+{{-- @if(backpack_user()->can('view places')) --}}
     <li class='nav-item'>
         <a class='nav-link' href='{{ backpack_url('place') }}'>
             <i class="nav-icon fas fa-location-arrow"></i> Places
         </a>
     </li>
-@endif
+{{-- @endif --}}
 <!-- Promotions -->
-@if(backpack_user()->can('view promotions'))
+{{-- @if(backpack_user()->can('view promotions')) --}}
     <li class='nav-item'>
         <a class='nav-link' href='{{ backpack_url('promotion') }}'>
             <i class="nav-icon fas fa-ad"></i> Promotions
         </a>
     </li>
-@endif
+{{-- @endif --}}
