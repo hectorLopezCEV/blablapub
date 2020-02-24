@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\User;
+use App\Models\Place;
+use App\Models\Promotion;
+use App\Policies\UserPolicy;
+use App\Policies\PlacePolicy;
+use App\Policies\PromotionPolicy;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +19,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
+        Place::class => PlacePolicy::class,
+        Promotion::class => PromotionPolicy::class
     ];
 
     /**
@@ -25,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Implicitly grant "Super Admin" role all permissions
+        // This works in the app by using gate-related functions like auth()->user->can() and @can()
+        Gate::before(function (User $user, $ability) {
+            return $user->hasRole('Super Admin') ? true : null;
+        });
     }
 }

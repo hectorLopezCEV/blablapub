@@ -10,17 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index');
 
-Route::prefix('admin')->group(function () {
-    Route::namespace('Admin')->group(function () {
-
-        Route::get('users', 'UsersController@index');
-        Route::post('users', 'UsersController@post');
-
-        Route::get('locales', 'LocalesController@index');
-
-        Route::get('promociones', 'PromocionesController@index');
-    });
-});
-
-// Route::get('/', 'Controller@index');
+Route::get('register', 'Admin\UsersController@index');
