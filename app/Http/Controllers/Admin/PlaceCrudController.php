@@ -31,10 +31,20 @@ class PlaceCrudController extends CrudController
         $this->crud->setModel(Place::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/place');
         $this->crud->setEntityNameStrings('place', 'places');
+        $this->crud->addFilter([
+            'name' => 'user_id',
+            'type' => 'select2_ajax',
+            'label'=> 'user',
+            'placeholder' => 'Elige un usuario'
+          ],
+          url('admin/ajax-users'), // the ajax route
+          function($value) { // if the filter is active
+              // $this->crud->addClause('where', 'category_id', $value);
+          });
     }
 
     protected function setupListOperation()
-    {
+    {    
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
         $this->crud->setFromDb();
     }

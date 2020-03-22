@@ -28,6 +28,7 @@ class UserCrudController extends BackpackUserCrudControllerAlias
 
     public function setup()
     {
+
         $this->crud->setModel(config('backpack.base.user_model_fqn'));
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'),
             trans('backpack::permissionmanager.users'));
@@ -174,7 +175,7 @@ class UserCrudController extends BackpackUserCrudControllerAlias
                 'name' => 'sexo',
                 'label' => 'Sexo',
                 'type' => 'radio',
-                'options'     => [
+                'options' => [
                     // the key will be stored in the db, the value will be shown as label;
                     'hombre' => "Hombre",
                     'mujer' => "Mujer",

@@ -21,7 +21,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ backpack_url('permission') }}">
-                <i class="nav-icon fa fa-key"></i> <span>Permissions</span>
+                <i class="nav-icon fa fa-key"></i> <span>Permisos</span>
             </a>
         </li>
     </ul>
@@ -37,7 +37,7 @@
 {{-- @if(backpack_user()->can('view places')) --}}
     <li class='nav-item'>
         <a class='nav-link' href='{{ backpack_url('place') }}'>
-            <i class="nav-icon fas fa-location-arrow"></i> Places
+            <i class="nav-icon fas fa-location-arrow"></i> Establecimientos
         </a>
     </li>
 {{-- @endif --}}
@@ -45,7 +45,7 @@
 {{-- @if(backpack_user()->can('view promotions')) --}}
     <li class='nav-item'>
         <a class='nav-link' href='{{ backpack_url('promotion') }}'>
-            <i class="nav-icon fas fa-ad"></i> Promotions
+            <i class="nav-icon fas fa-ad"></i> Promociones
         </a>
     </li>
 {{-- @endif --}}

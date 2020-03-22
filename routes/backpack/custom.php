@@ -15,6 +15,8 @@ Route::group([
     ],
     'namespace' => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+    Route::crud('user', 'UserCrudController');
+    Route::get('ajax-user', 'UserCrudController@usersOptions');
     Route::crud('place', 'PlaceCrudController');
     Route::crud('promotion', 'PromotionCrudController');
     Route::crud('user', 'UserCrudController');
