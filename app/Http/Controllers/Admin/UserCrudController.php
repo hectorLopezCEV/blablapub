@@ -2,18 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-<<<<<<< HEAD
-use App\Models\User;
-use App\Http\Requests\UserRequest;
-use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
-use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
-use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-=======
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanel;
 use Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
@@ -24,18 +12,13 @@ use Backpack\PermissionManager\app\Http\Controllers\UserCrudController as Backpa
 use Backpack\PermissionManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
 use Backpack\PermissionManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
 use Illuminate\Support\Facades\Hash;
->>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
 
 /**
  * Class UserCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-<<<<<<< HEAD
-class UserCrudController extends CrudController
-=======
 class UserCrudController extends BackpackUserCrudControllerAlias
->>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
 {
     use ListOperation;
     use CreateOperation;
@@ -45,40 +28,7 @@ class UserCrudController extends BackpackUserCrudControllerAlias
 
     public function setup()
     {
-<<<<<<< HEAD
-        $this->crud->setModel(User::class);
-        $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
-        $this->crud->setEntityNameStrings('user', 'users');
-       
-    }
 
-    protected function setupListOperation()
-    {  
-        // TODO: remove setFromDb() and manually define Columns, maybe Filters
-        $this->crud->setFromDb();
-    }
-
-    protected function setupCreateOperation()
-    {
-        $this->crud->setValidation(UserRequest::class);
-
-        // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
-    }
-
-    protected function setupUpdateOperation()
-    {    dd('jaja');
-        $this->setupCreateOperation();
-    }
-
-
-
-    public function usersOptions(Request $request){
-        $term = $request->input('term');
-        $options = User::where('name', 'like', '%'.$term.'%')->get()->pluck('name', 'id');
-        // puede faltar pasar los parametros de edad y sexo a 
-        return $options;
-=======
         $this->crud->setModel(config('backpack.base.user_model_fqn'));
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'),
             trans('backpack::permissionmanager.users'));
@@ -225,7 +175,7 @@ class UserCrudController extends BackpackUserCrudControllerAlias
                 'name' => 'sexo',
                 'label' => 'Sexo',
                 'type' => 'radio',
-                'options'     => [
+                'options' => [
                     // the key will be stored in the db, the value will be shown as label;
                     'hombre' => "Hombre",
                     'mujer' => "Mujer",
@@ -272,6 +222,5 @@ class UserCrudController extends BackpackUserCrudControllerAlias
                 ],
             ],
         ]);
->>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
     }
 }

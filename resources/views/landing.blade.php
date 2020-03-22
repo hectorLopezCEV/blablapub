@@ -53,17 +53,11 @@
             </div>
         </section>
 
-<<<<<<< HEAD
-                <div>
-                  
-                </div>
-=======
         <!-- Two -->
         <section id="two" class="wrapper style2">
             <header>
                 <h2>En todo tipo de ambiente</h2>
                 <p>solo tienes que preguntar en tu lugar favorito</p>
->>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
 
             </header>
             <div class="content">
