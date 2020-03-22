@@ -15,9 +15,14 @@ class UsersTableSeeder extends Seeder
         $superAdminUserId = DB::table('users')->insertGetId([
             'name' => 'Super Admin',
             'email' => 'superadmin@blablapub.com',
+<<<<<<< HEAD
             'edad'=> '22',
             'sexo'=> 'hombre',
             
+=======
+            'edad' => 22,
+            'sexo' => 'hombre',
+>>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
             'email_verified_at' => Carbon::now(),
             'password' => '$2y$10$fntLHvuujVt/ATOqaY3uvut/i/N07jSBG2ORPB4971glzwaPJrtfe',
             'remember_token' => Str::random(10),
@@ -28,8 +33,13 @@ class UsersTableSeeder extends Seeder
         $adminUserId = DB::table('users')->insertGetId([
             'name' => 'Admin',
             'email' => 'admin@blablapub.com',
+<<<<<<< HEAD
             'edad'=> '22',
             'sexo'=> 'hombre',
+=======
+            'edad' => 22,
+            'sexo' => 'hombre',
+>>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('admin'),
             'remember_token' => Str::random(10),
@@ -40,8 +50,13 @@ class UsersTableSeeder extends Seeder
         $managerUserId = DB::table('users')->insertGetId([
             'name' => 'Manager',
             'email' => 'manager@blablapub.com',
+<<<<<<< HEAD
             'edad'=> '22',
             'sexo'=> 'hombre',
+=======
+            'edad' => 22,
+            'sexo' => 'hombre',
+>>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('manager'),
             'remember_token' => Str::random(10),
@@ -52,8 +67,13 @@ class UsersTableSeeder extends Seeder
         $userUserId = DB::table('users')->insertGetId([
             'name' => 'User',
             'email' => 'user@blablapub.com',
+<<<<<<< HEAD
             'edad'=> '22',
             'sexo'=> 'hombre',
+=======
+            'edad' => 22,
+            'sexo' => 'hombre',
+>>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
             'email_verified_at' => Carbon::now(),
             'password' => bcrypt('user'),
             'remember_token' => Str::random(10),

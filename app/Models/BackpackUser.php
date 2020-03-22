@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Backpack\CRUD\app\Models\Traits\InheritsRelationsFromParentModel;
 use Backpack\CRUD\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
 
 class BackpackUser extends User
 {
     use InheritsRelationsFromParentModel;
-    use Notifiable;
 
     protected $table = 'users';
 

@@ -11,6 +11,9 @@
 |
 */
 Route::get('/', 'HomeController@index');
+<<<<<<< HEAD
 
 
    
+=======
+>>>>>>> cde9e8384dc97fbba20c1738e2dffc6ad780fdcf
