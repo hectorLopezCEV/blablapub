@@ -12,4 +12,5 @@
 */
 Route::get('/', 'HomeController@index');
 
-Route::get('register', 'Admin\UsersController@index');
+
+   

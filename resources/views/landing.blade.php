@@ -85,8 +85,7 @@
                 </div>
 
                 <div>
-                    {{ $pepe->name }}
-                    {{ $user2->name }}
+                  
                 </div>
 
                 <form action="", method="POST">
