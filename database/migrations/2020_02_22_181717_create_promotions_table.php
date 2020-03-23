@@ -16,7 +16,8 @@ class CreatePromotionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('place_id')->unsigned()->index();
             $table->string('image');
-            $table->string('promocion');
+            $table->string('nombre_promotion');
+            $table->dateTime('fecha_promotion');
             $table->boolean('published')->default(false);
             $table->timestamps();
             $table->softDeletes();

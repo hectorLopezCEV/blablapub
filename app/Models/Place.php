@@ -21,7 +21,7 @@ class Place extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['user_id', 'name'];
+    protected $fillable = ['user_id', 'name', 'zona', 'horario'];
     // protected $hidden = [];
     // protected $dates = [];
 

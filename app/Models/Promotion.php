@@ -20,7 +20,7 @@ class Promotion extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['place_id', 'nombre_promotion', 'fecha_promotion', 'published'];
     // protected $hidden = [];
     // protected $dates = [];
 
