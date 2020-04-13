@@ -15,6 +15,10 @@ Route::post('login', 'AuthController@login');
 
 Route::post('refresh', 'AuthController@refresh');
 
+Route::post('user', 'UserController@store');
+
+Route::post('user/reset-password', 'UserController@resetPassword');
+
 Route::group([
     'middleware' => 'auth:api',
 ], function ($router) {
@@ -24,7 +28,11 @@ Route::group([
 
     // User routes
     // TODO: sacar la ruta de crear usuario del auth:api
-    Route::resource('/user', 'UserController'); ///// creamos las rutas /////
+    // Route::resource('/user', 'UserController'); ///// creamos las rutas /////
+    Route::get('user', 'UserController@index');
+    Route::get('user/{id}', 'UserController@show');
+    Route::put('user/{id}', 'UserController@update');
+    Route::delete('user/{id}', 'UserController@destroy');
 
     // Place routes
     Route::resource('/place', 'PlaceController');
