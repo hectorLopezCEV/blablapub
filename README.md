@@ -21,4 +21,3 @@
     - `npm install`
     - `npm run prod`
     - `php artisan serve` => este solo en desarrollo, ya que nos hará un servidor virtual en [http://127.0.0.1:8000](http://127.0.0.1:8000)
-    ovi
