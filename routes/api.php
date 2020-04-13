@@ -10,8 +10,10 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::resource('/user', 'UserController'); ///// creamos las rutas /////
 
 Route::resource('/places', 'PlaceController@index');
+
 Route::resource('/promotions', 'PromotionsController@index');
 
