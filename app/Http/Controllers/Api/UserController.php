@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
-
 // creamos este controller de prueba para los Endpoints ////////////////////////
 
 class UserController extends BaseController
@@ -18,7 +17,7 @@ class UserController extends BaseController
      */
     public function index()
     {
-        return  User::all(); //////// nos traemos todos los elementos de la tabla/////////////
+        return User::all(); //////// nos traemos todos los elementos de la tabla/////////////
     }
 
     /**
@@ -26,7 +25,7 @@ class UserController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() 
+    public function create()
     {
         //
     }
@@ -37,10 +36,10 @@ class UserController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)  
+    public function store(Request $request)
     {
-        $user= new User(); // creamos el objeto
-        $user->name = $request->get('name');/// repetir campos//////
+        $user = new User(); // creamos el objeto
+        $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->password = $request->get('password');
         $user->edad = $request->get('edad');
@@ -79,7 +78,13 @@ class UserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id); // Buscamos el usuario
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = $request->get('password');
+        $user->edad = $request->get('edad');
+        $user->sexo = $request->get('sexo');
+        $user->save();
     }
 
     /**
@@ -90,6 +95,6 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        //
+        return (User::destroy($id));
     }
 }

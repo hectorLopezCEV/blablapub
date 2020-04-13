@@ -11,9 +11,25 @@
 |
 */
 
-Route::resource('/user', 'UserController'); ///// creamos las rutas /////
+Route::post('login', 'AuthController@login');
 
-Route::resource('/places', 'PlaceController@index');
+Route::post('refresh', 'AuthController@refresh');
 
-Route::resource('/promotions', 'PromotionsController@index');
+Route::group([
+    'middleware' => 'auth:api',
+], function ($router) {
+    // Auth routes
+    Route::post('logout', 'AuthController@logout');
+    Route::post('profile', 'AuthController@profile');
+
+    // User routes
+    // TODO: sacar la ruta de crear usuario del auth:api
+    Route::resource('/user', 'UserController'); ///// creamos las rutas /////
+
+    // Place routes
+    Route::resource('/place', 'PlaceController');
+
+    // Promotion routes
+    Route::resource('/promotion', 'PromotionsController');
+});
 

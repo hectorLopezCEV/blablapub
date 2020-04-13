@@ -16,6 +16,7 @@
 
     - `composer install`
     - `php artisan key:generate`
+    - `php artisan jwt:secret` => tendréis que confirmar que queréis crear una nueva clave
     - `php artisan migrate:refresh --seed`
     - `npm install`
     - `npm run prod`
