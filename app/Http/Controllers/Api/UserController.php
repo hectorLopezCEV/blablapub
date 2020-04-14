@@ -97,4 +97,14 @@ class UserController extends BaseController
     {
         return (User::destroy($id));
     }
+    public function resetPassword(Request $request){
+        $email = $request->get('email');
+        $user = User::Where($email)->first();
+        if(is_null($user)){
+            return response()->json("El usuario no exiaste");
+        }else{
+            
+        }
+
+    }
 }
