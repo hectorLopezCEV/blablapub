@@ -183,6 +183,15 @@ class UserCrudController extends BackpackUserCrudControllerAlias
                 ]
             ],
             [
+                'label' => "Imagen de perfil",
+                'name' => "image",
+                'type' => 'image',
+                'upload' => true,
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
+                // 'prefix' => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+            ],
+            [
                 'name' => 'password',
                 'label' => trans('backpack::permissionmanager.password'),
                 'type' => 'password',
