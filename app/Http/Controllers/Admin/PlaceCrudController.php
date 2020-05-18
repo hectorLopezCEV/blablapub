@@ -36,15 +36,15 @@ class PlaceCrudController extends CrudController
             'type' => 'select2_ajax',
             'label'=> 'user',
             'placeholder' => 'Elige un usuario'
-          ],
-          url('admin/ajax-users'), // the ajax route
-          function($value) { // if the filter is active
-              // $this->crud->addClause('where', 'category_id', $value);
-          });
+        ],
+            url('admin/ajax-users'), // the ajax route
+            function($value) { // if the filter is active
+                // $this->crud->addClause('where', 'category_id', $value);
+            });
     }
 
     protected function setupListOperation()
-    {    
+    {
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
         $this->crud->setFromDb();
     }
@@ -54,7 +54,21 @@ class PlaceCrudController extends CrudController
         $this->crud->setValidation(PlaceRequest::class);
 
         // TODO: remove setFromDb() and manually define Fields
-        $this->crud->setFromDb();
+        $this->crud->adFields([
+            [
+                'name' => 'name',
+                'label' => trans('backpack<::permissionmanager.name'),
+                'type' => 'text',
+            ],
+            [
+                'label' => "Imagen de perfil",
+                'name' => "image",
+                'type' => 'image',
+                'upload' => true,
+                'crop' => true,
+                'aspect-ratio' => 1,
+            ]
+        ]);
     }
 
     protected function setupUpdateOperation()
