@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
@@ -12,14 +13,27 @@ class AuthController extends Controller
     /**
      * Get a JWT via given credentials.
      *
+     * @param  Request  $request
      * @return JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
+        if (is_null($request->get('email')) || $request->get('email') === '') {
+            return response()->json([
+                'error' => 'Email required'
+            ], 400);
+        }
+        if (is_null($request->get('password')) || $request->get('password') === '') {
+            return response()->json([
+                'error' => 'Password required'
+            ], 400);
+        }
         $credentials = request(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json([
+                'error' => 'Unauthorized'
+            ], 401);
         }
 
         return $this->respondWithToken($token);
@@ -44,7 +58,9 @@ class AuthController extends Controller
     {
         auth('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(
+            ['message' => 'Successfully logged out']
+        );
     }
 
     /**
@@ -60,9 +76,13 @@ class AuthController extends Controller
             return response()->json(['message' => 'This token has been blacklisted']);
         } catch (Exception $e) {
             if (env('APP_ENV' == 'local')) {
-                return response()->json(['message' => $e->getMessage()]);
+                return response()->json([
+                    'message' => $e->getMessage()
+                ], 500);
             } else {
-                return response()->json(['message' => 'Internal server error']);
+                return response()->json([
+                    'message' => 'Internal server error'
+                    ], 500);
             }
         }
     }

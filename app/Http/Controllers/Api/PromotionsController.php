@@ -28,7 +28,7 @@ class PromotionsController extends BaseController
      */
     public function create()
     {
-        //
+        return null;
     }
 
     /**
@@ -46,14 +46,13 @@ class PromotionsController extends BaseController
     /**
      * Display the specified resource.
      * api/lugar/{lugar_id}/promotions/{id}
+     * @param  Request  $request
      * @param  int  $id
      * @return JsonResponse
      */
-    public function show($lugar_id, $id)
+    public function show(Request $request, $id)
     {
-        $promotions = Promotion::where('lugar_id', $lugar_id)
-            ->where('id', $id)
-            ->firstOrFail();
+        $promotions = Promotion::find($id);
         return response()->json($promotions);
     }
 

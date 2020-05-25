@@ -17,7 +17,6 @@ class PlaceController extends BaseController
      */
     public function index()
     {
-
         return response()->json(Place::orderBy('id', 'desc')->get());
     }
 
@@ -28,7 +27,7 @@ class PlaceController extends BaseController
      */
     public function create()
     {
-        //
+        return null;
     }
 
     /**
@@ -39,7 +38,7 @@ class PlaceController extends BaseController
      */
     public function store(Request $solicitud)
     {
-        return response()->json(Lugar::create($solicitud->all()));
+        return response()->json(Place::create($solicitud->all()));
     }
 
     /**
@@ -50,7 +49,7 @@ class PlaceController extends BaseController
      */
     public function show($id)
     {
-        return response()->json(Lugar::with('promotions')->find($id));
+        return response()->json(Place::with('promotions')->find($id));
     }
 
     /**
@@ -74,7 +73,7 @@ class PlaceController extends BaseController
     public function update(Request $request, $id)
     {
         //encuentra el recurso con $id
-        $lugar = Lugar::find($id);
+        $lugar = Place::find($id);
         //actualizacion de campos
         $lugar->fill($request->all());
         //guarda en la base de datos
@@ -91,7 +90,7 @@ class PlaceController extends BaseController
      */
     public function destroy($id)
     {
-        $lugar = Lugar::find($id);
+        $lugar = Place::find($id);
         $lugar->delete();
         return response()->json([
             'exito' => 'El lugar '.$lugar->nombres.' ha sido eliminado'
@@ -100,19 +99,19 @@ class PlaceController extends BaseController
 
     public function lugarPorNombres($nombres)
     {
-        $lugar = Lugar::where('nombres', $nombres)->get();
+        $lugar = Place::where('nombres', $nombres)->get();
         return response()->json($lugar);
     }
 
     public function lugarPorZona($zona)
     {
-        $lugar = Lugar::where('zona', 'like', '%'.$zona.'%')->get();
+        $lugar = Place::where('zona', 'like', '%'.$zona.'%')->get();
         return response()->json($lugar);
     }
 
     public function lugarPorIds()
     {
-        $lugar = Lugar::find([2, 3]);
+        $lugar = Place::find([2, 3]);
         return response()->json($lugar);
     }
 
@@ -120,8 +119,8 @@ class PlaceController extends BaseController
     {
         $lugar = [];
         if ($zona != null) {
-            $lugar = Lugar::where('nombres', $nombres)
-                ->where('zona', $zona)
+            $lugar = Place::where('nombres', $nombres)
+                ->orWhere('zona', $zona)
                 ->get();
         } else {
             $lugar = Lugar::where('nombres', $nombres)->get();
@@ -132,17 +131,17 @@ class PlaceController extends BaseController
 
     public function mostrarEliminados()
     {
-        return response()->json(Lugar::onlyTrashed()->get());
+        return response()->json(Place::onlyTrashed()->get());
     }
 
     public function mostrarTodos()
     {
-        return response()->json(Lugar::withTrashed()->get());
+        return response()->json(Place::withTrashed()->get());
     }
 
     public function restaurar($id)
     {
-        $lugar = Lugar::onlyTrashed()->find($id);
+        $lugar = Place::onlyTrashed()->find($id);
         //restaura registro eliminado logicamente
         //poniendo en null deleted_at
         $lugar->restore();

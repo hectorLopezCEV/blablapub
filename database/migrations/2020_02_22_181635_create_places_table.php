@@ -16,6 +16,7 @@ class CreatePlacesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->index();
             $table->string('name')->unique();
+            $table->string('image');
             $table->string('zona');
             $table->string('horario');
             $table->boolean('published')->default(false);

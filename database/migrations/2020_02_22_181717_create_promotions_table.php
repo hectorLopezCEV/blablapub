@@ -15,7 +15,7 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('place_id')->unsigned()->index();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('nombre_promotion');
             $table->dateTime('fecha_promotion');
             $table->boolean('published')->default(false);
