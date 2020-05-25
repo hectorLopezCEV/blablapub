@@ -19,6 +19,7 @@ class CreatePlacesTable extends Migration
             $table->string('image');
             $table->string('zona');
             $table->string('horario');
+            $table->string('image');
             $table->boolean('published')->default(false);
             $table->timestamps();
             $table->softDeletes();

@@ -66,7 +66,7 @@ class UserController extends BaseController
         $user = new User(); // creamos el objeto
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = bcrypt($request->get('password'));
         $user->edad = $request->get('edad');
         $user->sexo = $request->get('sexo');
         $user->save();
@@ -90,7 +90,7 @@ class UserController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function edit($id)
@@ -135,7 +135,7 @@ class UserController extends BaseController
         $user = User::find($id); // Buscamos el usuario
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = bcrypt($request->get('password'));
         $user->edad = $request->get('edad');
         $user->sexo = $request->get('sexo');
         $user->save();
